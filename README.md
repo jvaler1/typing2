@@ -1,5 +1,27 @@
-# Vue 3 + TypeScript + Vite
+# Typing - Learn to Type!
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+A fun and interactive typing application designed specifically for children to learn and practice their keyboard typing
+skills. This educational tool helps young learners become familiar with typing through simple, commonly used words.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## Features
+
+- Child-friendly interface
+- Simple common words for practice
+- Progressive difficulty levels
+- Immediate feedback on typing accuracy
+- Fun animations and rewards
+- Track typing speed and accuracy
+
+## Technical Details
+
+Built with:
+
+- Vue.js 3
+- TypeScript
+- Tailwind CSS
+- Vite
+
+## Getting Started
+
+1. Clone the repository
+2. Install dependencies:
