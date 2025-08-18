@@ -7,10 +7,8 @@ skills. This educational tool helps young learners become familiar with typing t
 
 - Child-friendly interface
 - Simple common words for practice
-- Progressive difficulty levels
 - Immediate feedback on typing accuracy
-- Fun animations and rewards
-- Track typing speed and accuracy
+
 
 ## Technical Details
 
