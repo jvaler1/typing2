@@ -20,9 +20,10 @@ watch(inputModel, (newValue) => {
 
 const cycleWord = () => {
   setTimeout(() => {
-    const nextIndex = (currentIndex.value + 1) % words.length
+    currentIndex.value = (currentIndex.value + 1) % words.length
     inputModel.value = ''
-    word.value = words[nextIndex]
+    word.value = words[currentIndex.value]
+    isCorrect.value = false
   }, timeOutAfterCorrect)
 }
 
