@@ -2,10 +2,12 @@
 
 import {onMounted, ref, watch} from "vue";
 
+const timeOutAfterCorrect = 3000;
 const words = ['cat', 'dog', 'mouse']
 const word = ref<string|null>(null)
 const inputModel = defineModel<string>('')
-const isCorrect = ref(false)
+const isCorrect = ref<boolean>(false)
+const currentIndex = ref<number>(0)
 
 watch(inputModel, (newValue) => {
   if (newValue === word.value) {
@@ -18,15 +20,15 @@ watch(inputModel, (newValue) => {
 
 const cycleWord = () => {
   setTimeout(() => {
-    const currentIndex = words.indexOf(word.value || '')
-    const nextIndex = (currentIndex + 1) % words.length
+    const nextIndex = (currentIndex.value + 1) % words.length
     inputModel.value = ''
     word.value = words[nextIndex]
-  }, 3000)
+  }, timeOutAfterCorrect)
 }
 
 onMounted(() => {
-  word.value = words[Math.floor(Math.random() * words.length)]
+  currentIndex.value = Math.floor(Math.random() * words.length)
+  word.value = words[currentIndex.value]
 })
 
 </script>
