@@ -32,17 +32,12 @@ onMounted(() => {
 
 <template>
   <span>Please type</span><h1>{{ word }}</h1>
-  <input type="text" v-model='inputModel' :class="{ 'correct': isCorrect, 'incorrect': !isCorrect }"/>
+  <input type="text" v-model='inputModel'
+         :class="{ 'border-green-500': isCorrect, 'border border-red-500': !isCorrect }"/>
   <p></p>
   <span v-if="isCorrect">That is Correct!</span>
   <span v-else>That is Incorrect!</span>
 </template>
 
 <style scoped>
-.incorrect {
-  border-color: red;
-}
-.correct {
-  border-color: green;
-}
 </style>
