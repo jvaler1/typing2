@@ -38,6 +38,3 @@ onMounted(() => {
   <span v-if="isCorrect">That is Correct!</span>
   <span v-else>That is Incorrect!</span>
 </template>
-
-<style scoped>
-</style>
