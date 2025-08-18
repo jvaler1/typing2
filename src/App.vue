@@ -5,7 +5,7 @@ import {onMounted, ref, watch} from "vue";
 const timeOutAfterCorrect = 3000;
 const words = ['cat', 'dog', 'mouse']
 const word = ref<string>('')
-const inputModel = defineModel<string>('')
+const inputModel = defineModel<string>( { default: '' })
 const isCorrect = ref<boolean>(false)
 const currentIndex = ref<number>(0)
 
