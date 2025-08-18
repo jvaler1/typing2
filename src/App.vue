@@ -26,7 +26,7 @@ const cycleWord = () => {
 }
 
 onMounted(() => {
-  word.value = words[0]
+  word.value = words[Math.floor(Math.random() * words.length)]
 })
 
 </script>
