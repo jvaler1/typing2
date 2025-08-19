@@ -1,49 +1,50 @@
 <script setup lang="ts">
-
-import {onMounted, ref, watch} from "vue";
+import {onMounted, ref, watch} from 'vue';
+import axios from 'axios';
 
 // Delay in milliseconds before moving to next word after correct answer
 const timeOutAfterCorrect = 3000;
 // Array of words to test typing against
-const words = ['cat', 'dog', 'mouse']
+const words = ref<string[]>([]);
 // Currently displayed word to type
-const word = ref<string>('')
+const word = ref<string>('');
 // Two-way binding for input field value
-const inputModel = defineModel<string>({default: ''})
+const inputModel = defineModel<string>({default: ''});
 // Tracks if current input matches word
-const isCorrect = ref<boolean>(false)
+const isCorrect = ref<boolean>(false);
 // Index of current word in words array
-const currentIndex = ref<number>(0)
+const currentIndex = ref<number>(0);
 
-// Watch input field value and check if it matches current word
+// Watch the input field value and check if it matches the current word
 watch(inputModel, (newValue) => {
   if (newValue === word.value) {
-    isCorrect.value = true
-    cycleWord()
+    isCorrect.value = true;
+    cycleWord();
   } else {
-    isCorrect.value = false
+    isCorrect.value = false;
   }
-})
+});
 
 // Function to move to next word after correct answer
 const cycleWord = () => {
   setTimeout(() => {
-    // Increment index and wrap around if at end of array
-    currentIndex.value = (currentIndex.value + 1) % words.length
+    // Increment index and wrap around if at the end of the array
+    currentIndex.value = (currentIndex.value + 1) % words.value.length;
     // Clear input field
-    inputModel.value = ''
+    inputModel.value = '';
     // Set new word to display
-    word.value = words[currentIndex.value]
+    word.value = words.value[currentIndex.value];
     // Reset correct status
-    isCorrect.value = false
-  }, timeOutAfterCorrect)
-}
+    isCorrect.value = false;
+  }, timeOutAfterCorrect);
+};
 
 // Initialize with random word on component mount
-onMounted(() => {
-  currentIndex.value = Math.floor(Math.random() * words.length)
-  word.value = words[currentIndex.value]
-})
+onMounted(async () => {
+  words.value = await axios.get('http://localhost:8080/api/words').then(response => response.data);
+  currentIndex.value = Math.floor(Math.random() * words.value.length);
+  word.value = words.value[currentIndex.value];
+});
 
 </script>
 
